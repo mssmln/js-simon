@@ -10,25 +10,47 @@
 var array = [];
 var arrayUser = [];
 
-for (var i = 0; i < 5; i++) {
-  var numeri = random(1, 50);
+while (array.length == 5) {
+  var numeri = random(1, 10);
+  if (!array.includes(numeri) ) {
+    array.push(numeri);
+  }
 
-  array.push(numeri);
 }
+// for (var i = 0; i <= 5; i++) {
+//
+// }
 
 alert(array);
 console.log(array);
 setTimeout(function() {
-  for (var i = 0; i < array.length; i++) {
+
+  while (array.length == 5) {
     var n = parseInt(prompt('type'));
-    arrayUser.push(n);
+    if ( (array.includes(n) ) && !(arrayUser.includes(n) ) ) {
+      arrayUser.push(n);
+
+    }
+
   }
+  // for (var i = 0; i < array.length; i++) {
+  //   var n = parseInt(prompt('type'));
+  //   if ( (array.includes(n) ) && !(arrayUser.includes(n) ) ) {
+  //     arrayUser.push(n);
+  //
+  //   }
+  //   if (arrayUser.includes(n)) { // la condizione if va necessariamente dentro il for, lo eseguirebbe subito se fosse fuori visto che il for è asincrono per mezzo di setTimeout
+  //
+  //     document.getElementById('indovinati').innerHTML = 'you guessed ' + arrayUser;
+  //     document.getElementById('totali').innerHTML = 'totale numeri indovinati ' + arrayUser.length;
+  //   }
+  // }
   console.log(arrayUser);
 }, 2000);
 
-if (arrayUser.includes(array[i])) {
-  console.log('sth came out');
-}
+
+
+
 
 
 
