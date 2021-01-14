@@ -10,12 +10,11 @@
 var array = [];
 var arrayUser = [];
 
-while (array.length == 5) {
+while (array.length < 5) {
   var numeri = random(1, 10);
   if (!array.includes(numeri) ) {
     array.push(numeri);
   }
-
 }
 // for (var i = 0; i <= 5; i++) {
 //
@@ -25,7 +24,7 @@ alert(array);
 console.log(array);
 setTimeout(function() {
 
-  while (array.length == 5) {
+  while (array.length < 5) {
     var n = parseInt(prompt('type'));
     if ( (array.includes(n) ) && !(arrayUser.includes(n) ) ) {
       arrayUser.push(n);
