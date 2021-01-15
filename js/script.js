@@ -31,20 +31,23 @@ setTimeout(function() {
       insert = parseInt(prompt('again, key in numbers you saw'));
     }
     // until
-    while (numeriGiaDigitati.includes(insert)) { // questo while messo tra il primo while e if dice che devi digitare 3 volte lo stesso numero per attivarsi ma io lo voglio a 2 volte
+    while (numeriGiaDigitati.includes(insert)) {
       alert('number already typed, try again');
-      console.log(numeriGiaDigitati);
-
       insert = parseInt(prompt('key in numbers you saw'));
     }
     if ((!numeriIndovinati.includes(insert)) && (numeriCasuali.includes(insert)) ){
       numeriIndovinati.push(insert);
-    } else {
-      numeriGiaDigitati.push(insert);
     }
+    // else {
+    //   numeriGiaDigitati.push(insert);
+    // }
+    // se avessi messo numeriGiaDigitati.push(insert); nella condizione if come else,
+    // il secondo while avrebbe funzionato solo al 3 inserimento del numero e non al 2
+    numeriGiaDigitati.push(insert);
   }
-  console.log(numeriIndovinati);
-  console.log(numeriGiaDigitati);
+
+  console.log('indovinati: ' + numeriIndovinati.length + ' e sono: ' + numeriIndovinati);
+  console.log('tutti i digitati: ' + numeriGiaDigitati);
 }, 2000);
 
 
