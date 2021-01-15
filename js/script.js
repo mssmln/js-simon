@@ -7,52 +7,45 @@
 // L'utente per 30 secondi non vede nulla....e quindi cercherà immagino di ripetersi mentalmente i numeri :stuck_out_tongue:
 // L'utente prova a inserire, uno alla volta, tutti e 5 i numeri :muscle:
 
-var array = [];
-var arrayUser = [];
 
-while (array.length < 5) {
+var numeriCasuali = [];
+var numeriIndovinati = [];
+var numeriGiaDigitati = [];
+
+for (var i = 0; numeriCasuali.length < 5; i++) {
   var numeri = random(1, 10);
-  if (!array.includes(numeri) ) {
-    array.push(numeri);
+  if (!numeriCasuali.includes(numeri)) {
+    numeriCasuali.push(numeri);
   }
 }
-// for (var i = 0; i <= 5; i++) {
-//
-// }
+alert(numeriCasuali);
+console.log(numeriCasuali);
 
-alert(array);
-console.log(array);
 setTimeout(function() {
+  for (var i = 0; i < 5; i++) {
+    var insert = parseInt(prompt('key in numbers you saw'));
 
-  while (arrayUser.length == 5) {
-    var n = parseInt(prompt('type'));
-    if ( (array.includes(n) ) && !(arrayUser.includes(n) ) ) {
-      arrayUser.push(n);
+    // until
+    while (insert < 1 || insert > 10 || isNaN(insert)) {
+      alert('solo numeri tra 1 e 10');
+      insert = parseInt(prompt('again, key in numbers you saw'));
     }
-    if (arrayUser.includes(n)) { // la condizione if va necessariamente dentro il for, lo eseguirebbe subito se fosse fuori visto che il for è asincrono per mezzo di setTimeout
+    // until
+    while (numeriGiaDigitati.includes(insert)) { // questo while messo tra il primo while e if dice che devi digitare 3 volte lo stesso numero per attivarsi ma io lo voglio a 2 volte
+      alert('number already typed, try again');
+      console.log(numeriGiaDigitati);
 
-    document.getElementById('indovinati').innerHTML = 'you guessed ' + arrayUser;
-    document.getElementById('totali').innerHTML = 'totale numeri indovinati ' + arrayUser.length;
+      insert = parseInt(prompt('key in numbers you saw'));
+    }
+    if ((!numeriIndovinati.includes(insert)) && (numeriCasuali.includes(insert)) ){
+      numeriIndovinati.push(insert);
+    } else {
+      numeriGiaDigitati.push(insert);
     }
   }
-
-  console.log(arrayUser);
+  console.log(numeriIndovinati);
+  console.log(numeriGiaDigitati);
 }, 2000);
-
-
-  // for (var i = 0; i < array.length; i++) {
-  //   var n = parseInt(prompt('type'));
-  //   if ( (array.includes(n) ) && !(arrayUser.includes(n) ) ) {
-  //     arrayUser.push(n);
-  //
-  //   }
-  //   if (arrayUser.includes(n)) { // la condizione if va necessariamente dentro il for, lo eseguirebbe subito se fosse fuori visto che il for è asincrono per mezzo di setTimeout
-  //
-  //     document.getElementById('indovinati').innerHTML = 'you guessed ' + arrayUser;
-  //     document.getElementById('totali').innerHTML = 'totale numeri indovinati ' + arrayUser.length;
-  //   }
-  // }
-
 
 
 function random(min, max) {
